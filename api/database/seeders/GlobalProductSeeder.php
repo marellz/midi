@@ -21,35 +21,41 @@ class GlobalProductSeeder extends Seeder
     public function run()
     {
         //
-        $brands = GlobalBrand::all();
+        // $brands = GlobalBrand::all();
 
-        foreach ($brands as $brand) {
 
-            $sectors = $brand->sectors;
 
-            foreach (range(1, 3) as $prod) {
-                $faker = Faker::create();
-                $fee = $faker->randomDigitNotNull() * 5000;
-                $extraFee = $faker->randomDigitNotNull() * 1000;
-                $max_fee = $faker->boolean($chanceOfGettingTrue = 50) ? $fee + $extraFee : null;
-                $randomPurchaseType = PurchaseType::inRandomOrder()->first();
-                $brand_sector = $sectors->random();
-                $sector = Sector::findOrFail($brand_sector->sector_id);
+        // $sectors = $brand->sectors;
+        $products = [
+            "Motor Private Insurance",
+            "Motor commercial Insurance",
+            "Home Insurance",
+            "Money market Fund",
+            "Academia",
+            "Jipange plus"
+        ];
 
-                
-                GlobalProduct::create([
-                    "name" => "Product " . $prod . ' - ' . $sector->name,
-                    "global_brand_id" => $brand->id,
-                    "description" => $faker->words($nb = 100, $asText = true),
-                    // "product_type_id" => "",
-                    "purchase_type_id" => $randomPurchaseType->id,
-                    "purchase_duration_id" => 1,
-                    "payment_frequency_id" => $randomPurchaseType->id === 2 ? 4 : null,
-                    "sector_id" => $sector->id,
-                    "fee" => $fee,
-                    "fee_max" => $max_fee,
-                ]);
-            }
+        foreach ($products as $product) {
+
+            $faker = Faker::create();
+            $fee = $faker->randomDigitNotNull() * 5000;
+            $extraFee = $faker->randomDigitNotNull() * 1000;
+            $max_fee = $faker->boolean($chanceOfGettingTrue = 50) ? $fee + $extraFee : null;
+            $randomPurchaseType = PurchaseType::inRandomOrder()->first();
+            // $sector = Sector::findOrFail($brand_sector->sector_id);
+
+            GlobalProduct::create([
+                "name" => $product,
+                "global_brand_id" => 1, // CIC
+                "description" => $faker->words($nb = 100, $asText = true),
+                // "product_type_id" => "",
+                "purchase_type_id" => $randomPurchaseType->id,
+                "purchase_duration_id" => 1, // one time
+                "payment_frequency_id" => $randomPurchaseType->id === 2 ? 4 : null,
+                "sector_id" => 1, // insurance
+                "fee" => $fee,
+                "fee_max" => $max_fee,
+            ]);
         }
     }
 }
