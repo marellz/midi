@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('entities', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('type_id');
+            $table->integer('entity_type_id');
             $table->integer('sector_id')->nullable();
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
     }

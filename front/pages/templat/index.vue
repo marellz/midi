@@ -1,6 +1,6 @@
 <template>
-  <div class="container mx-auto py-20">
+  <layout-container class="py-20">
     <h1 class="text-4xl font-bold">Hello</h1>
-  </div>
+  </layout-container>
 </template>
 <script setup></script>

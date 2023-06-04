@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="container mx-auto py-20">
+    <layout-container class="py-20">
       <slot />
-    </div>
+    </layout-container>
   </div>
 </template>
 <script setup>

@@ -1,13 +1,13 @@
 <template>
-  <div class="inline-flex items-center">
+  <div class="py-4 flex">
     <input
       :id="id"
       v-model="val"
-      class="checkbox"
-      type="checkbox"
+      class="radio"
+      type="radio"
       :value="inputValue"
     />
-    <label :for="id" class="checkbox-label" :class="labelClass">
+    <label :for="id" class="ml-3 flex-auto" :class="labelClass">
       <div class="checkbox-content">
         <slot>
           <p>
@@ -21,7 +21,7 @@
 <script setup lang="ts">
 const props = defineProps({
   checked: {
-    type: [Boolean, Array],
+    type: [Boolean, Array, String, Number],
     default: false,
   },
   inputValue: {

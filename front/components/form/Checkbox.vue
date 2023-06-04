@@ -21,7 +21,7 @@
 <script setup lang="ts">
 const props = defineProps({
   checked: {
-    type: [Boolean, Array],
+    type: [Boolean, Array, String, Number],
     default: false,
   },
   inputValue: {
@@ -41,7 +41,7 @@ const props = defineProps({
 const emit = defineEmits(["update:checked"]);
 const id = Math.random().toString(36).substring(7);
 const val = computed({
-  get: () => props.checked,
+  get: () => props.inputValue,
   set: (v) => {
     emit("update:checked", v);
   },
