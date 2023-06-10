@@ -1,7 +1,7 @@
 <template>
   <div class="app h-[100vh]">
     <div class="flex h-full">
-      <div class="w-64 flex-none py-4 px-1 bg-gray-100">
+      <div class="w-64 flex-none py-4 px-1 bg-gray-50">
         <div class="px-5 mt-10">
           <nuxt-link to="/" class="d-block w-2/3 mx-auto" >
             <img src="@/assets/images/logo.svg" alt="">
@@ -12,7 +12,7 @@
             <router-link
               class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 rounded-sm font-semibold"
               :class="{
-                '!bg-blue-400 !text-white': routeMatches(link.path, i === 0),
+                '!bg-blue-100 !text-blue-500': routeMatches(link.path, i === 0),
               }"
               :to="link.path"
             >

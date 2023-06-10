@@ -11,7 +11,7 @@ class Entity extends Model
 
     protected $fillable = [
         "name",
-        "type_id",
+        "entity_type_id",
         "sector_id",
         "description",
     ];

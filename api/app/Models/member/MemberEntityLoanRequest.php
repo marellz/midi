@@ -2,6 +2,7 @@
 
 namespace App\Models\member;
 
+use App\Models\entity\EntityMember;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,4 +17,9 @@ class MemberEntityLoanRequest extends Model
         "principal_amount",
         "approved",
     ];
+
+    public function member()
+    {
+        return $this->belongsTo(EntityMember::class);
+    }
 }

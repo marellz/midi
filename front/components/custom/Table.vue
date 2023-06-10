@@ -1,41 +1,47 @@
 <template>
-  <table class="table border-separate border-spacing-y-2 w-full">
+  <table class="table border-separate border-spacing-x-0 rounded w-full">
     <thead>
       <tr>
         <th
           v-for="(field, index) in fields"
           :key="`th-${index}`"
-          class="bg-gray-200 p-2 first:rounded-l last:rounded-r text-left"
+          class="border-t p-2 pb-3 first:border-l last:border-r border-gray-100 first:rounded-tl-lg last:rounded-tr-lg text-left bg-gray-100"
         >
-          <span class="text-sm font-bold text-gray-500">
+          <span class="text-xs font-bold uppercase text-gray-500">
             {{ field.label }}
           </span>
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr
-        v-for="(item, index) in items"
-        :key="`tr-${index}`"
-        class="hover:bg-gray-100"
-      >
-        <td
-          v-for="(field, i) in fields"
-          :key="`td-${i}`"
-          :width="field.width"
-          class="align-middle text-sm first:rounded-l last:rounded-r"
-        >
-          <slot :name="field.key" v-bind="item">
-            <a
-              href="#"
-              class="block px-3 py-2"
-              @click.prevent="() => $emit('row-click', item[rowKey])"
-            >
+      <template v-if="items.length">
+        <table-tr v-for="(item, index) in items" :key="`tr-${index}`">
+          <table-td
+            v-for="(field, i) in fields"
+            :key="`td-${i}`"
+            :width="field.width"
+            @click="() => $emit('row-click', item[rowKey])"
+          >
+            <slot :name="field.key" v-bind="item">
               {{ item[field.key] }}
-            </a>
-          </slot>
-        </td>
-      </tr>
+            </slot>
+          </table-td>
+        </table-tr>
+      </template>
+      <template v-else-if="loading">
+        <table-tr>
+          <table-td :colspan="fields.length">
+            <p class="text-sm text-center text-gray-500 py-3">Loading</p>
+          </table-td>
+        </table-tr>
+      </template>
+      <template v-else>
+        <table-tr>
+          <table-td :colspan="fields.length">
+            <p class="text-sm text-center text-gray-500 py-3">No data</p>
+          </table-td>
+        </table-tr>
+      </template>
     </tbody>
   </table>
 </template>
@@ -52,6 +58,10 @@ defineProps({
   rowKey: {
     type: String,
     default: "id",
+  },
+  loading: {
+    type: Boolean,
+    default: false,
   },
 });
 

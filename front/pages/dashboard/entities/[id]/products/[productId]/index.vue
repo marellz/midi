@@ -5,17 +5,23 @@
         {{ product.name }}
       </h1>
       <div class="flex-auto flex justify-end space-x-2">
-        <custom-button>Edit</custom-button>
+        <custom-button color="outline-primary">Edit</custom-button>
         <custom-button>Delete</custom-button>
       </div>
     </div>
 
     <div>
       <div class="flex">
-        <template v-for="(attr, index) in productAttributes" :key="index">
-          <p v-html="attr(product[index])"></p>
-          <span class="font-bold text-gray-300 px-3">|</span>
-        </template>
+        <p class="text-gray-700">
+          {{ product.type.name }}
+        </p>
+        <span class="font-bold text-gray-300 px-3">|</span>
+        <p class="text-gray-700">{{ product.type.sector.name }}</p>
+        <span class="font-bold text-gray-300 px-3">|</span>
+        <p class="text-gray-700">
+          {{ product.type.purchase_type.name }}
+        </p>
+        <span class="font-bold text-gray-300 px-3">|</span>
       </div>
       <div class="mt-10">
         <p>
@@ -28,12 +34,26 @@
 
   <div>
     <layout-container>
-      <custom-tabs :tabs="tabs">
+      <custom-tabs :loading="pending" :tabs="tabs">
         <template #tab-1>
-          <custom-table
-            :fields="purchaseFields"
-            :items="purchases"
-          ></custom-table>
+          <custom-table :fields="purchaseFields" :items="purchases">
+            <template #member="{ member }">
+              <p class="font-medium">
+                {{ member.name }}
+              </p>
+
+              <div class="text-gray-500 text-xs mt-1">
+                <a
+                  href="#"
+                  v-for="(item, index) in [member.phone, member.email]"
+                  :key="index"
+                  class="px-1 first:border-l-0 first:pl-0 border-l"
+                >
+                  {{ item }}
+                </a>
+              </div>
+            </template>
+          </custom-table>
         </template>
       </custom-tabs>
     </layout-container>
@@ -47,11 +67,6 @@ definePageMeta({
 const route = useRoute();
 const entityId = route.params.id;
 const productId = route.params.productId;
-const productAttributes = ref({
-  price: (d) => `Ksh. ${d}`,
-  entity_id: (d) => `Enitity name : ${d}`,
-  product_type_id: (d) => `Product type : ${d}`,
-});
 
 const tabs = ref([
   {
@@ -63,7 +78,7 @@ const tabs = ref([
 const purchaseFields = ref([
   {
     label: "Member",
-    key: "member_id",
+    key: "member",
   },
   {
     label: "Start date",
@@ -76,6 +91,7 @@ const purchaseFields = ref([
 ]);
 
 const {
+  pending,
   data: {
     value: { product, purchases },
   },

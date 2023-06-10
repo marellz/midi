@@ -21,6 +21,10 @@ class EntityLoan extends Model
         "rate_pa",
     ];
 
+    public function entity()
+    {
+        return $this->belongsTo(Entity::class);
+    }
 
     public function requests()
     {

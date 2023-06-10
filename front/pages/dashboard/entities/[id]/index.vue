@@ -3,15 +3,15 @@
     <layout-container class="py-20">
       <h1 class="text-4xl font-bold">{{ entity.name }}</h1>
       <div class="flex space-x-2 mt-2">
-        <span>Sector {{ entity.sector_id }}</span>
-        <span class="text-gray-300">|</span>
-        <span>Entity-type {{ entity.entity_type_id }}</span>
-        <span class="text-gray-300">|</span>
-        <span>Created {{ entity.created_at }}</span>
+        <span class="text-gray-600">{{ entity.sector.name }}</span>
+        <span class="text-blue-300">|</span>
+        <span class="text-gray-600">{{ entity.type.name }}</span>
+        <span class="text-blue-300">|</span>
+        <span class="text-gray-600">Created {{ entity.created }}</span>
       </div>
       <div class="mt-10">
-        <h6 class="text-gray-500 text-lg font-medium mb-2">
-          About this [entity-type-{{ entity.entity_type_id }}]
+        <h6 class="text-blue-500 text-lg font-medium mb-2">
+          About
         </h6>
         <p>
           {{ entity.description }}
@@ -20,11 +20,11 @@
     </layout-container>
   </div>
   <div>
-    <layout-container class=" py-20"></layout-container>
+    <layout-container class="py-20"></layout-container>
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 definePageMeta({
   name: "DashboardEntity",
   layout: "entity-dash",

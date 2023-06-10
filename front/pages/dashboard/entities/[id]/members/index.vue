@@ -4,7 +4,13 @@
   </layout-container>
   <div>
     <layout-container class="">
-      <custom-table :fields="fields" :items="members"></custom-table>
+      <custom-table :loading="pending" :fields="fields" :items="members">
+        <template #name="{name}">
+          <p class="font-bold">
+            {{ name }}
+          </p>
+        </template>
+      </custom-table>
     </layout-container>
   </div>
 </template>
@@ -29,12 +35,16 @@ const fields = ref([
     label: "Phone",
     key: "phone",
   },
-  {
-    label: "Actions",
-    key: "actions",
-  },
+  // {
+  //   label: "Actions",
+  //   key: "actions",
+  // },
 ]);
 
-const { data: members } =  await useCustomFetch(`/entities/${id}/members`)
-
+const {
+  pending,
+  data: {
+    value: { members },
+  },
+} = await useCustomFetch(`/entities/${id}/members`);
 </script>

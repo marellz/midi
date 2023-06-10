@@ -45,9 +45,31 @@
       </layout-container>
     </div> -->
     <layout-container class="px-5">
-      <custom-table :fields="fields" :items="memberContributions">
-        {{ cont }}</custom-table
+      <custom-table
+        :loading="pending"
+        :fields="fields"
+        :items="memberContributions"
       >
+        <template #member="{ member }">
+          <p class="font-medium">
+            {{ member.name }}
+          </p>
+
+          <div class="text-gray-500 text-xs mt-1">
+            <a
+              href="#"
+              v-for="(item, index) in [member.phone, member.email]"
+              :key="index"
+              class="px-1 first:border-l-0 first:pl-0 border-l"
+            >
+              {{ item }}
+            </a>
+          </div>
+        </template>
+        <template #amount="{ amount }">
+          <p>Ksh. {{ amount.toLocaleString() }}</p>
+        </template>
+      </custom-table>
     </layout-container>
   </div>
 </template>
@@ -62,36 +84,43 @@ const id = route.params.id;
 const fields = ref([
   {
     label: "Member",
-    key: "entity_member_id",
+    key: "member",
   },
   {
-    label: "Contribution period",
-    key: "contribution_period",
+    label: "Amount",
+    key: "amount",
   },
   {
     label: "Transaction code",
     key: "transaction_code",
   },
   {
-    label: "",
-    key: "phone",
+    label: "Date",
+    key: "payment_date",
   },
   {
-    label: "Actions",
+    label: "",
     key: "actions",
   },
 ]);
 
 const {
+  pending,
   data: {
-    value: { contributions: entityContributions },
+    value: {
+      contributions: entityContributions,
+      member_contributions: memberContributions,
+    },
   },
 } = await useCustomFetch(`/entities/${id}/entity-contributions`);
 
 const activeEntityContribution = ref(entityContributions[0].id);
-const memberContributions = computed(
-  () => entityContributions.find(entity=>entity.id === activeEntityContribution.value).member_contributions
-);
+// const memberContributions = computed(
+//   () =>
+//     entityContributions.find(
+//       (entity) => entity.id === activeEntityContribution.value
+//     ).member_contributions
+// );
 
 // useCustomFetch(`/entities/${id}/entity-contributions`).then(res=>console.log(res.data.value));
 // const activeEntityContribution = ref(entityContributions[0]);

@@ -6,6 +6,7 @@ use App\Http\Controllers\entity\EntityController;
 use App\Http\Controllers\entity\EntityMemberContributionController;
 use App\Http\Controllers\entity\EntityMemberController;
 use App\Http\Controllers\entity\EntityProductController;
+use App\Http\Controllers\entity\EntityProductPurchaseController;
 use App\Http\Controllers\EntityLoanController;
 use App\Http\Controllers\GlobalProductController;
 use App\Http\Controllers\user\UserController;
@@ -57,7 +58,7 @@ Route::group(['prefix' => 'entities/{id}'], function () {
     Route::group(['prefix' => '/products'], function () {
         Route::get('/', [EntityProductController::class, 'index']);
         Route::get('/{productId}', [EntityProductController::class, 'show']);
-        Route::get('/{productId}/purchases', [EntityProductController::class, 'index']);
+        Route::get('/{productId}/purchases', [EntityProductPurchaseController::class, 'index']);
     });
 
     # loans

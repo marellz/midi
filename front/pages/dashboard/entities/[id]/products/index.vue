@@ -15,9 +15,9 @@
             <p class="text-sm text-gray-600 mt-2">
               {{ item.description }}
             </p>
-            <hr class="my-2" />
+            <hr class="my-2 border-gray-100" />
             <div class="flex">
-              <p class="font-medium text-lg text-gray-700">Ksh. {{ item.price }}</p>
+              <p class="font-medium text-lg text-gray-700">Ksh. {{ item.price.toLocaleString() }}</p>
               <!-- <div class="flex-auto flex justify-end space-x-2">
                 <custom-button>Edit</custom-button>
                 <custom-button>Delete</custom-button>

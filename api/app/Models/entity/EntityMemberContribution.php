@@ -22,5 +22,8 @@ class EntityMemberContribution extends Model
     // entity_contribution
     // member
 
-
+    public function member()
+    {
+        return $this->belongsTo(EntityMember::class, 'entity_member_id');
+    }
 }
