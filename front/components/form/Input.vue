@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col mb-2">
-    <label :for="id" class="font-sm font-medium mb-2">
+    <label :for="id" class="text-sm font-medium mb-2 text-gray-700">
       <slot>
         <p class="m-0">
           {{ label }}
@@ -10,7 +10,7 @@
     <input
       :id="id"
       v-model="mValue"
-      class="font-sm outline-none border border-gray-300 h-10 px-3 rounded focus:ring-2 focus:ring-blue-500"
+      class="text-sm outline-none border border-gray-300 h-10 px-3 rounded focus:ring-2 focus:ring-blue-500 bg-transparent"
       :type="inputType"
       :name="name"
       :required="required"

@@ -3,14 +3,14 @@
     <div class="flex h-full">
       <div class="w-64 flex-none py-4 px-1 bg-gray-100">
         <div class="px-5 mt-10">
-          <nuxt-link to="/" class="d-block w-2/3 mx-auto" >
-            <img src="@/assets/images/logo.svg" alt="">
+          <nuxt-link to="/" class="d-block w-2/3 mx-auto">
+            <img src="@/assets/images/logo.svg" alt="" />
           </nuxt-link>
         </div>
         <ul class="mt-20">
           <li v-for="(link, i) in links" :key="i" class="mb-1">
             <router-link
-              class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 rounded-sm font-semibold"
+              class="block px-4 py-3 text-sm text-gray-800 hover:bg-blue-100 rounded-lg font-medium"
               :class="{
                 '!bg-blue-400 !text-white': routeMatches(link.path, i === 0),
               }"
@@ -35,8 +35,8 @@ definePageMeta({
 const route = useRoute();
 const links = [
   { label: "Home", path: `/dashboard`, index: true },
-  { label: "Entities", path: '/dashboard/entities', },
-  { label: "Global products", path: '/dashboard/global-products', },
+  { label: "Entities", path: "/dashboard/entities" },
+  { label: "Global products", path: "/dashboard/global-products" },
   { label: "Users", path: "/dashboard/users" },
 ];
 const routeMatches = (path, isIndex) => {

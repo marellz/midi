@@ -1,9 +1,10 @@
 <template>
-  <div class="mt-10 w-96 p-3 border border-gray-200 rounded">
+  <div class="mt-10 p-10">
     <form @submit.prevent="register">
-      <h1 class="text-4xl font-bold my-5">Register</h1>
+      <h1 class="text-4xl font-semibold mb-7">Register</h1>
       <form-input required label="Name" v-model="user.name" />
-      <form-input required label="Email/Phone" v-model="user.identifier" />
+      <form-input required label="Phone number" v-model="user.phone" />
+      <form-input required label="Email address" v-model="user.email" />
       <form-input
         required
         label="Password"
@@ -16,12 +17,14 @@
         type="password"
         v-model="user.confirm_password"
       />
-      <custom-button block>Submit</custom-button>
+      <div class="my-7">
+        <custom-button block>Submit</custom-button>
+      </div>
     </form>
     <div class="py-4">
       <p>
         Have an account?
-        <nuxt-link to="/login" class="text-blue-500">Login</nuxt-link>
+        <nuxt-link to="/auth/login" class="text-blue-500">Login</nuxt-link>
       </p>
     </div>
   </div>
@@ -30,12 +33,13 @@
 <script setup>
 const user = ref({
   name: "",
-  identifier: "",
+  phone: "",
+  email: "",
   password: "",
   password_confirmation: "",
 });
 
 definePageMeta({
-  layout: "blank",
+  layout: "auth",
 });
 </script>

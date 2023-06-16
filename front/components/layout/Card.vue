@@ -1,6 +1,6 @@
 <template>
   <div
-    class="rounded border border-gray-100 p-3"
+    class="rounded-lg border border-gray-100 p-3 bg-white shadow"
     :class="[bgColor]"
   >
     <slot />

@@ -21,10 +21,17 @@
   </div>
 </template>
 <script setup>
-const links = ref([
-  { label: "Home", path: "/" },
+const authenticatedLinks = ref([
+  // { label: "Home", path: "/" },
   { label: "Dashboard", path: "/dashboard/entities" },
-  { label: "Login", path: "/login" },
-  { label: "Register", path: "/register" },
 ]);
+
+const guestLinks = [
+  { label: "Login", path: "/auth/login" },
+  { label: "Register", path: "/auth/register" },
+]
+
+const auth = ref(true)
+
+const links = computed(()=> auth.value ? authenticatedLinks.value : guestLinks.value )
 </script>
