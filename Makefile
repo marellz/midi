@@ -1,20 +1,22 @@
-start:
-	concurrently "php api/artisan serve" "yarn --cwd front dev -o"
+up: 
+	docker-compose up
 
-up: start
+build:
+	docker-compose up --build
 
 # api
 api-install:
-	cp $(CURDIR)/api/.env.example $(CURDIR)/api/.env && composer install --working-dir=$(CURDIR)/api
+	cp $(CURDIR)/api/.env.example $(CURDIR)/api/.env
+	cp .env.example .env
 
 api-config:
-	php api/artisan config:cache
+	docker exec -ti midi_api_1 php artisan migrate
 
 migrate: api-config
-	php api/artisan migrate
+	docker exec -ti midi_api_1 php artisan migrate
 
 api-key-generate:
-	php api/artisan key:generate
+	docker exec -ti midi_api_1 php api/artisan key:generate
 
 api-setup: api-install api-key-generate api-config migrate
 
@@ -27,7 +29,7 @@ setup: api-setup front-install
 
 # other
 db-refresh:
-	php api/artisan migrate:fresh && php api/artisan db:seed
+	docker exec -ti midi_api_1 php api/artisan migrate:fresh && php api/artisan db:seed
 
 # test: 
 # 	 @echo "test"
