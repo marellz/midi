@@ -13,7 +13,10 @@
         </div>
       </div>
       <div class="flex space-x-2 ml-auto">
-        <custom-button>Talk to an agent</custom-button>
+        <custom-button>
+          <pencil-icon class="h-4 mr-2" />
+          <span>Edit details</span>
+        </custom-button>
       </div>
     </div>
   </layout-container>
@@ -47,6 +50,7 @@
 </template>
 
 <script setup>
+import { PencilIcon } from "@heroicons/vue/24/outline";
 definePageMeta({
   name: "GlobalProduct",
   layout: "dash",

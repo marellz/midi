@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-10 p-10">
+  <div class="">
     <form @submit.prevent="register">
       <h1 class="text-4xl font-semibold mb-7">Register</h1>
       <form-input required label="Name" v-model="user.name" />
@@ -24,7 +24,7 @@
     <div class="py-4">
       <p>
         Have an account?
-        <nuxt-link to="/auth/login" class="text-blue-500">Login</nuxt-link>
+        <nuxt-link to="/auth/login" class="text-primary">Login</nuxt-link>
       </p>
     </div>
   </div>

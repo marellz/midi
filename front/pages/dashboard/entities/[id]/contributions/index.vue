@@ -14,25 +14,21 @@
   <div>
     <layout-container class="px-5">
       <div class="flex flex-wrap">
-        <div
-          class="flex p-3"
+        <form-radio
+          class="flex p-4 border rounded-lg"
           v-for="(cont, index) in entityContributions"
           :key="index"
+          v-model:update:checked="activeEntityContribution"
+          :input-value="cont.id"
+          name="entity-contribution"
         >
-          <input
-            type="radio"
-            name="entity-contribution"
-            v-model="activeEntityContribution"
-            :value="cont.id"
-            :id="`contribution-${cont.id}`"
-          />
-          <label :for="`contribution-${cont.id}`" class="ml-2">
+          <div>
             <p>
               {{ cont.name }}
-              <span class="font-normal">(Ksh.{{ cont.amount }})</span>
+              <span class="font-normal"> (Ksh.{{ cont.amount }}) </span>
             </p>
-          </label>
-        </div>
+          </div>
+        </form-radio>
       </div>
     </layout-container>
     <!-- <div class="py-3">
@@ -44,7 +40,7 @@
         </h1>
       </layout-container>
     </div> -->
-    <layout-container class="px-5">
+    <layout-container class="px-5 mt-10">
       <custom-table
         :loading="pending"
         :fields="fields"

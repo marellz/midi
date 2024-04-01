@@ -10,7 +10,7 @@
         <span class="text-gray-600">Created {{ entity.created }}</span>
       </div>
       <div class="mt-10">
-        <h6 class="text-blue-500 text-lg font-medium mb-2">
+        <h6 class="text-primary text-lg font-medium mb-2">
           About
         </h6>
         <p>

@@ -1,38 +1,41 @@
 <template>
-  <layout-container class="py-20">
-    <div class="flex align-center mb-10">
-      <h1 class="text-4xl font-bold">
-        {{ product.name }}
-      </h1>
-      <div class="flex-auto flex justify-end space-x-2">
-        <custom-button color="outline-primary">Edit</custom-button>
-        <custom-button>Delete</custom-button>
-      </div>
-    </div>
+  <div class="bg-blue-100">
 
-    <div>
-      <div class="flex">
-        <p class="text-gray-700">
-          {{ product.type.name }}
-        </p>
-        <span class="font-bold text-gray-300 px-3">|</span>
-        <p class="text-gray-700">{{ product.type.sector.name }}</p>
-        <span class="font-bold text-gray-300 px-3">|</span>
-        <p class="text-gray-700">
-          {{ product.type.purchase_type.name }}
-        </p>
-        <span class="font-bold text-gray-300 px-3">|</span>
+    <layout-container class="py-20">
+      <div class="flex align-center mb-10">
+        <h1 class="text-4xl font-bold">
+          {{ product.name }}
+        </h1>
+        <div class="flex-auto flex justify-end space-x-2">
+          <custom-button color="outline-primary">Edit</custom-button>
+          <custom-button>Delete</custom-button>
+        </div>
       </div>
-      <div class="mt-10">
-        <p>
-          {{ product.description }}
-        </p>
+  
+      <div>
+        <div class="flex">
+          <p class="text-gray-700">
+            {{ product.type.name }}
+          </p>
+          <span class="font-bold text-gray-300 px-3">|</span>
+          <p class="text-gray-700">{{ product.type.sector.name }}</p>
+          <span class="font-bold text-gray-300 px-3">|</span>
+          <p class="text-gray-700">
+            {{ product.type.purchase_type.name }}
+          </p>
+          <span class="font-bold text-gray-300 px-3">|</span>
+        </div>
+        <div class="mt-10">
+          <p>
+            {{ product.description }}
+          </p>
+        </div>
       </div>
-    </div>
-    <!-- {{ product }} -->
-  </layout-container>
+      <!-- {{ product }} -->
+    </layout-container>
+  </div>
 
-  <div>
+  <div class="mt-10">
     <layout-container>
       <custom-tabs :loading="pending" :tabs="tabs">
         <template #tab-1>

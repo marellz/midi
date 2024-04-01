@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-10 w-96 p-10">
+  <div class="">
     <form @submit.prevent="login">
       <h1 class="text-4xl font-semibold mb-7">Login</h1>
       <form-input required label="Email/Phone" v-model="user.identifier" />
@@ -18,7 +18,7 @@
     <div class="py-4 mt-5">
       <p class="">
         Not a member?
-        <nuxt-link to="/auth/register" class="text-blue-500">Register</nuxt-link>
+        <nuxt-link to="/auth/register" class="text-primary">Register</nuxt-link>
       </p>
     </div>
   </div>
