@@ -13,7 +13,9 @@
     <main class="flex-auto">
         <layout-container class="py-20">
             <div class="flex justify-center">
-                <slot />
+                <div class="w-96 mt-10 py-10">
+                    <slot />
+                </div>
             </div>
         </layout-container>
     </main>

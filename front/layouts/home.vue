@@ -1,6 +1,6 @@
 <template>
-  <div class="app">
-    <header class="py-4 bg-gray-100">
+  <div class="app relative">
+    <header class="py-4 absolute z-10 w-full">
       <layout-container>
         <div class="flex items-center">
           <nuxt-link to="/" class="d-block" >
@@ -26,12 +26,12 @@ const authenticatedLinks = ref([
   { label: "Dashboard", path: "/dashboard/entities" },
 ]); 
 
-const guestLinks = [
+const guestLinks = ref([
   { label: "Login", path: "/auth/login" },
   { label: "Register", path: "/auth/register" },
-]
+])
 
-const auth = ref(true)
+const auth = ref(false)
 
 const links = computed(()=> auth.value ? authenticatedLinks.value : guestLinks.value )
 </script>

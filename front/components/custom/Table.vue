@@ -5,7 +5,7 @@
         <th
           v-for="(field, index) in fields"
           :key="`th-${index}`"
-          class="border-t p-2 pb-3 first:border-l last:border-r border-gray-100 first:rounded-tl-lg last:rounded-tr-lg text-left bg-gray-100"
+          class="border-t p-2 pb-3 first:border-l last:border-r border-gray-200 first:rounded-tl-lg last:rounded-tr-lg text-left bg-gray-200"
         >
           <span class="text-xs font-bold uppercase text-gray-500">
             {{ field.label }}

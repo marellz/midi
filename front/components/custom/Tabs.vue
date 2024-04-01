@@ -5,7 +5,7 @@
         type="button"
         @click="activeTab = tab.key"
         class="border-b-2 border-b-gray-100 text-gray-500 font-medium px-8 py-2"
-        :class="{ '!border-b-blue-500 !text-blue-500': activeTab == tab.key }"
+        :class="{ '!border-b-primary !text-primary': activeTab == tab.key }"
       >
         {{ tab.label }}
       </button>

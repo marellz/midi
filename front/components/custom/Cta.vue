@@ -21,7 +21,7 @@ defineProps({
   },
   color: {
     type: String,
-    default: "text-blue-500 hover:bg-blue-100",
+    default: "text-primary hover:bg-blue-100",
   },
 });
 

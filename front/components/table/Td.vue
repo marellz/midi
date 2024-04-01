@@ -1,6 +1,6 @@
 <template>
   <td
-    class="border-b first:border-l last:border-r align-middle text-sm border-gray-100 px-3 py-2 text-gray-700"
+    class="border-b first:border-l last:border-r align-middle border-gray-200 px-3 py-4 text-gray-700"
     @click="() => $emit('click')"
   >
     <span>

@@ -20,7 +20,7 @@ defineProps({
 });
 
 const colors = {
-  info: "text-blue-500 bg-blue-100 hover:bg-blue-200", // blue,
+  info: "text-primary bg-blue-100 hover:bg-blue-200", // blue,
   warning: "text-amber-500 bg-amber-100", // amber,
   error: "text-red-500 bg-red-100", // red,
   success: "text-green-500 bg-green-100", // green,

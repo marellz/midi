@@ -1,7 +1,7 @@
 <template>
   <component
     :is="preferredComponent"
-    class="inline-flex justify-center items-center py-2 px-6 font-medium rounded"
+    class="inline-flex justify-center items-center py-2 px-6 font-medium rounded whitespace-nowrap"
     :disabled="btnDisabled"
     :type="btnType"
     :to="to"
@@ -36,9 +36,9 @@ const props = defineProps({
 });
 
 const colors = {
-  primary: "bg-blue-500 text-white hover:bg-blue-400 disabled:bg-blue-200",
+  primary: "bg-primary text-white hover:bg-primary disabled:bg-blue-200",
   secondary: "bg-gray-500 text-white hover:gray-500 disabled:bg-gray-300",
-  "outline-primary": "border border-blue-500 text-blue-500 hover:bg-blue-100 disabled:border-blue-200 disabled:border-blue-200",
+  "outline-primary": "border border-primary text-primary hover:bg-blue-100 disabled:border-blue-200 disabled:border-blue-200",
   "outline-secondary": "border border-gray-500 text-gray-500 hover:bg-gray-100 disabled:border-gray-300 disabled:text-gray-300",
 };
 

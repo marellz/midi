@@ -9,11 +9,15 @@ module.exports = {
     "./app.vue",
   ],
   theme: {
-    fontFamily:{
-      sans:"Poppins, sans-serif",
+    extend: {
+      colors: {
+        "custom-gray": "#cac4ceff",
+        linen: "#f7ece1ff",
+        primary: "#0fa3b1ff",
+        dark: "#414361ff",
+        darker: "#2a2d43ff",
+      },
     },
-    extend: {},
   },
   plugins: [],
 };
-
